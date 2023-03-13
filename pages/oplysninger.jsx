@@ -2,40 +2,54 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Info from "@/components/ui/Info";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Select() {
-  let dateData = "";
-  let price = 0;
-  let finalPrice = 0;
-  let car = "";
-  let dates = "";
-  let afhentning = "";
-  let aflevering = "";
-  let dayAmount = 0;
-  let barnesæde1 = "";
-  let barnesæde2 = "";
-  let vejhjælp = "";
-  let gps = "";
-  let lift = "";
-  let snekæder = "";
+  const [dateData, setDateData] = useState("");
+  const [price, setPrice] = useState(0);
+  const [finalPrice, setFinalPrice] = useState(0);
+  const [car, setCar] = useState("");
+  const [dates, setDates] = useState("");
+  const [afhentning, setAfhegning] = useState("");
+  const [aflevering, setAflevering] = useState("");
+  const [dayAmount, setDayAmount] = useState(0);
+  const [barnesæde1, setBarnesaede1] = useState("");
+  const [barnesæde2, setBarnesaede2] = useState("");
+  const [vejhjælp, setVejhjaelp] = useState("");
+  const [gps, setGPS] = useState("");
+  const [lift, setLift] = useState("");
+  const [snekæder, setSnekaeder] = useState("");
 
   useEffect(() => {
-    dateData = sessionStorage.getItem("date");
-    dates = JSON.parse(dateData);
-    afhentning = new Date(dates.afhentning);
-    aflevering = new Date(dates.aflevering);
+    const dateData = sessionStorage.getItem("date");
+    const price = parseInt(sessionStorage.getItem("price"));
+    const finalPrice = sessionStorage.getItem("total");
+    const car = sessionStorage.getItem("car");
+    const dates = JSON.parse(dateData);
+    const afhentning = new Date(dates.afhentning);
+    const aflevering = new Date(dates.aflevering);
+    const dayAmount = Math.round((aflevering - afhentning) / 86400000);
+    const barnesæde1 = sessionStorage.getItem("Barnesæde (1-4 år)");
+    const barnesæde2 = sessionStorage.getItem("Barnesæde (5-12 år)");
+    const vejhjælp = sessionStorage.getItem("Vejhjælp");
+    const gps = sessionStorage.getItem("GPS navigation");
+    const lift = sessionStorage.getItem("Lift-net (0-1 år)");
+    const snekæder = sessionStorage.getItem("Snekæder");
 
-    car = sessionStorage.getItem("car");
-    price = parseInt(sessionStorage.getItem("price"));
-    dayAmount = Math.round((aflevering - afhentning) / 86400000);
-    finalPrice = sessionStorage.getItem("total");
-    barnesæde1 = sessionStorage.getItem("Barnesæde (1-4 år)");
-    barnesæde2 = sessionStorage.getItem("Barnesæde (5-12 år)");
-    vejhjælp = sessionStorage.getItem("Vejhjælp");
-    gps = sessionStorage.getItem("GPS navigation");
-    lift = sessionStorage.getItem("Lift-net (0-1 år)");
-    snekæder = sessionStorage.getItem("Snekæder");
+    setDateData(dateData);
+    setPrice(price);
+    setFinalPrice(finalPrice);
+    setCar(car);
+    setDates(dates);
+    setAfhegning(afhentning);
+    setAflevering(aflevering);
+    setDayAmount(dayAmount);
+    setBarnesaede1(barnesæde1);
+    setBarnesaede2(barnesæde2);
+    setVejhjaelp(vejhjælp);
+    setGPS(gps);
+    setLift(lift);
+    setSnekaeder(snekæder);
   }, []);
 
   return (
@@ -71,10 +85,10 @@ export default function Select() {
             <div className=" space-y-2">
               <h2 className=" text-3xl md:text-xl  font-medium">{car}</h2>
               <p className=" text-lg md:text-base">
-                Aflevering: {"2023-06-12"}{" "}
+                Aflevering: {new Date(dates.afhentning).toLocaleDateString()}{" "}
               </p>
               <p className=" text-lg md:text-base">
-                Afhentning: {"2023-06-15"}{" "}
+                Afhentning: {new Date(dates.aflevering).toLocaleDateString()}{" "}
               </p>
               <p className=" text-lg md:text-base">Antal dage: {dayAmount}</p>
             </div>

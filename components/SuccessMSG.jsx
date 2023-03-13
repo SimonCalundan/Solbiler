@@ -1,19 +1,25 @@
 import React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function SuccessMSG() {
-  let navn = "";
-  let mail = "";
-  let phone = "";
-  let lastName = "";
-  let address = "";
+  const [navn, setNavn] = useState("");
+  const [mail, setMail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [address, setAddress] = useState("");
 
   useEffect(() => {
-    let navn = sessionStorage.getItem("name");
-    let mail = sessionStorage.getItem("mail");
-    let phone = sessionStorage.getItem("phone");
-    let lastName = sessionStorage.getItem("lastName");
-    let address = sessionStorage.getItem("address");
+    const navnData = sessionStorage.getItem("name");
+    const mailData = sessionStorage.getItem("mail");
+    const phoneData = sessionStorage.getItem("phone");
+    const lastNameData = sessionStorage.getItem("lastName");
+    const addressData = sessionStorage.getItem("address");
+
+    setNavn(navnData);
+    setMail(mailData);
+    setPhone(phoneData);
+    setLastName(lastNameData);
+    setAddress(addressData);
   }, []);
 
   return (

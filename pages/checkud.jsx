@@ -1,7 +1,6 @@
 import React from "react";
 import Head from "next/head";
 import Select from "@/components/Select";
-import { useState } from "react";
 
 export default function checkud() {
   return (

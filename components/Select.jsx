@@ -4,23 +4,31 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function Select() {
-  let dateData = "";
-  let price = 0;
-  let car = "";
-  let dates = "";
-  let afhentning = "";
-  let aflevering = "";
-  let dayAmount = 0;
+  const [dateData, setDateData] = useState("");
+  const [price, setPrice] = useState(0);
+  const [car, setCar] = useState("");
+  const [dates, setDates] = useState("");
+  const [afhentning, setAfhentning] = useState("");
+  const [aflevering, setAflevering] = useState("");
+  const [dayAmount, setDayAmount] = useState(0);
 
   useEffect(() => {
-    dateData = sessionStorage.getItem("date");
-    dates = JSON.parse(dateData);
-    afhentning = new Date(dates.afhentning);
-    aflevering = new Date(dates.aflevering);
+    const dateData = sessionStorage.getItem("date");
+    const dates = JSON.parse(dateData);
+    const afhentning = new Date(dates.afhentning);
+    const aflevering = new Date(dates.aflevering);
 
-    car = sessionStorage.getItem("car");
-    price = parseInt(sessionStorage.getItem("price"));
-    dayAmount = Math.round((aflevering - afhentning) / 86400000);
+    const car = sessionStorage.getItem("car");
+    const price = parseInt(sessionStorage.getItem("price"));
+    const dayAmount = Math.round((aflevering - afhentning) / 86400000);
+
+    setDateData(dateData);
+    setDates(dates);
+    setAfhentning(afhentning);
+    setAflevering(aflevering);
+    setCar(car);
+    setPrice(price);
+    setDayAmount(dayAmount);
   }, []);
 
   const [total, setTotal] = useState(0);
@@ -52,10 +60,10 @@ export default function Select() {
             <div className=" space-y-2">
               <h2 className=" text-3xl md:text-xl  font-medium">{car}</h2>
               <p className=" text-lg md:text-base">
-                Aflevering: {"2023-06-12"}{" "}
+                Aflevering: {new Date(dates.afhentning).toLocaleDateString()}{" "}
               </p>
               <p className=" text-lg md:text-base">
-                Afhentning: {"2023-06-15"}{" "}
+                Afhentning: {new Date(dates.aflevering).toLocaleDateString()}{" "}
               </p>
               <p className=" text-lg md:text-base">Antal dage: {dayAmount}</p>
             </div>
