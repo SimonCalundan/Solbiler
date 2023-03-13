@@ -1,11 +1,20 @@
 import React from "react";
+import { useEffect } from "react";
 
 export default function SuccessMSG() {
-  const navn = sessionStorage.getItem("name");
-  const mail = sessionStorage.getItem("mail");
-  const phone = sessionStorage.getItem("phone");
-  const lastName = sessionStorage.getItem("lastName");
-  const address = sessionStorage.getItem("address");
+  let navn = "";
+  let mail = "";
+  let phone = "";
+  let lastName = "";
+  let address = "";
+
+  useEffect(() => {
+    let navn = sessionStorage.getItem("name");
+    let mail = sessionStorage.getItem("mail");
+    let phone = sessionStorage.getItem("phone");
+    let lastName = sessionStorage.getItem("lastName");
+    let address = sessionStorage.getItem("address");
+  }, []);
 
   return (
     <>

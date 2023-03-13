@@ -2,18 +2,41 @@ import React from "react";
 import Link from "next/link";
 import Head from "next/head";
 import Info from "@/components/ui/Info";
+import { useEffect } from "react";
 
 export default function Select() {
-  const dateData = sessionStorage.getItem("date");
-  const dates = JSON.parse(dateData);
-  const afhentning = new Date(dates.afhentning);
-  const aflevering = new Date(dates.aflevering);
+  let dateData = "";
+  let price = 0;
+  let finalPrice = 0;
+  let car = "";
+  let dates = "";
+  let afhentning = "";
+  let aflevering = "";
+  let dayAmount = 0;
+  let barnesæde1 = "";
+  let barnesæde2 = "";
+  let vejhjælp = "";
+  let gps = "";
+  let lift = "";
+  let snekæder = "";
 
-  const car = sessionStorage.getItem("car");
-  const price = parseInt(sessionStorage.getItem("price"));
-  const dayAmount = Math.round((aflevering - afhentning) / 86400000);
+  useEffect(() => {
+    dateData = sessionStorage.getItem("date");
+    dates = JSON.parse(dateData);
+    afhentning = new Date(dates.afhentning);
+    aflevering = new Date(dates.aflevering);
 
-  const finalPrice = sessionStorage.getItem("total");
+    car = sessionStorage.getItem("car");
+    price = parseInt(sessionStorage.getItem("price"));
+    dayAmount = Math.round((aflevering - afhentning) / 86400000);
+    finalPrice = sessionStorage.getItem("total");
+    barnesæde1 = sessionStorage.getItem("Barnesæde (1-4 år)");
+    barnesæde2 = sessionStorage.getItem("Barnesæde (5-12 år)");
+    vejhjælp = sessionStorage.getItem("Vejhjælp");
+    gps = sessionStorage.getItem("GPS navigation");
+    lift = sessionStorage.getItem("Lift-net (0-1 år)");
+    snekæder = sessionStorage.getItem("Snekæder");
+  }, []);
 
   return (
     <>
@@ -57,35 +80,19 @@ export default function Select() {
             </div>
             <div className=" space-y-2">
               <h2 className=" text-3xl md:text-xl  font-medium">Tilvalg</h2>
-              {sessionStorage.getItem("Barnesæde (1-4 år)") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("Barnesæde (1-4 år)")} kr.
-                </p>
+              {barnesæde1 ? (
+                <p className="text-lg md:text-base">{barnesæde1} kr.</p>
               ) : null}
-              {sessionStorage.getItem("Barnesæde (5-12 år)") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("Barnesæde (5-12 år)")} kr.
-                </p>
+              {barnesæde2 ? (
+                <p className="text-lg md:text-base">{barnesæde2} kr.</p>
               ) : null}
-              {sessionStorage.getItem("Vejhjælp") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("Vejhjælp")} kr.
-                </p>
+              {vejhjælp ? (
+                <p className="text-lg md:text-base">{vejhjælp} kr.</p>
               ) : null}
-              {sessionStorage.getItem("GPS navigation") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("GPS navigation")} kr.
-                </p>
-              ) : null}
-              {sessionStorage.getItem("Lift-net (0-1 år)") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("Lift-net (0-1 år)")} kr.
-                </p>
-              ) : null}
-              {sessionStorage.getItem("Snekæder") ? (
-                <p className="text-lg md:text-base">
-                  {sessionStorage.getItem("Snekæder")} kr.
-                </p>
+              {gps ? <p className="text-lg md:text-base">{gps} kr.</p> : null}
+              {lift ? <p className="text-lg md:text-base">{lift} kr.</p> : null}
+              {snekæder ? (
+                <p className="text-lg md:text-base">{snekæder} kr.</p>
               ) : null}
             </div>
 

@@ -1,17 +1,27 @@
 import React from "react";
 import Checkbox from "./ui/Checkbox";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 
-export default function Select({ nextWindow }) {
-  const dateData = sessionStorage.getItem("date");
-  const dates = JSON.parse(dateData);
-  const afhentning = new Date(dates.afhentning);
-  const aflevering = new Date(dates.aflevering);
+export default function Select() {
+  let dateData = "";
+  let price = 0;
+  let car = "";
+  let dates = "";
+  let afhentning = "";
+  let aflevering = "";
+  let dayAmount = 0;
 
-  const car = sessionStorage.getItem("car");
-  const price = parseInt(sessionStorage.getItem("price"));
-  const dayAmount = Math.round((aflevering - afhentning) / 86400000);
+  useEffect(() => {
+    dateData = sessionStorage.getItem("date");
+    dates = JSON.parse(dateData);
+    afhentning = new Date(dates.afhentning);
+    aflevering = new Date(dates.aflevering);
+
+    car = sessionStorage.getItem("car");
+    price = parseInt(sessionStorage.getItem("price"));
+    dayAmount = Math.round((aflevering - afhentning) / 86400000);
+  }, []);
 
   const [total, setTotal] = useState(0);
 

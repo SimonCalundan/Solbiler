@@ -4,8 +4,6 @@ import Select from "@/components/Select";
 import { useState } from "react";
 
 export default function checkud() {
-  const [showForm, setShowForm] = useState(false);
-  const [showSelect, setShowSelect] = useState(true);
   return (
     <>
       <Head>
