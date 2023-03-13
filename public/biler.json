@@ -1,0 +1,76 @@
+{
+  "billiste": [
+    {
+      "navn": "Opel Corsa",
+      "billede": "/opel_corsa.jpeg",
+      "kategori": "mellemklasse",
+      "personer": "5",
+      "kufferter": "2",
+      "pris": "372,86"
+    },
+    {
+      "navn": "Fiat 500",
+      "billede": "/fiat_500.jpeg",
+      "kategori": "mindre",
+      "personer": "4",
+      "kufferter": "1",
+      "pris": "379,28"
+    },
+    {
+      "navn": "Kia Cee'd",
+      "billede": "/kia_ceed.jpeg",
+      "kategori": "mellemklasse",
+      "personer": "5",
+      "kufferter": "2",
+      "pris": "481,81"
+    },
+    {
+      "navn": "Renault Zoe",
+      "billede": "/renault.jpeg",
+      "kategori": "mellemklasse",
+      "personer": "5",
+      "kufferter": "1",
+      "pris": "371,42"
+    },
+    {
+      "navn": "BMW X1",
+      "billede": "/bmw_x.jpeg",
+      "kategori": "luksuriøs",
+      "personer": "5",
+      "kufferter": "3",
+      "pris": "504,11"
+    },
+    {
+      "navn": "Skoda Fabia",
+      "billede": "/skoda.jpeg",
+      "kategori": "luksuriøs",
+      "personer": "5",
+      "kufferter": "5",
+      "pris": "417,91"
+    },
+    {
+      "navn": "Nissan Leaf",
+      "billede": "/leaf.jpeg",
+      "kategori": "budget",
+      "personer": "5",
+      "kufferter": "1",
+      "pris": "451,07"
+    },
+    {
+      "navn": "Kia Sportage",
+      "billede": "/sportage.jpeg",
+      "kategori": "mellemklasse",
+      "personer": "5",
+      "kufferter": "3",
+      "pris": "560,25"
+    },
+    {
+      "navn": "BMW 2 Series",
+      "billede": "/bmw_2.jpeg",
+      "kategori": "luksuriøs",
+      "personer": "5",
+      "kufferter": "2",
+      "pris": "528,28"
+    }
+  ]
+}
